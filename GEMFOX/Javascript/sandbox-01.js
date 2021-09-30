@@ -1,6 +1,7 @@
 //beginner friendly level:
 //============
 
+
 function removeProperty(obj, prop)
 {
     prop = String(prop);
@@ -15,6 +16,7 @@ function removeProperty(obj, prop)
     
     return undefined;
 }
+
 
 //Intermediate level:
 //===================
@@ -42,5 +44,36 @@ Object.prototype.remove = function (prop)
     return undefined;
 }
 
+
+//Alternative ways:
+//Using hasOwnProperty method:
+Object.prototype.removeProperty = function(prop)
+{
+    prop = String(prop);
+    if(this.hasOwnProperty(prop))
+    {
+        const foundedProperty = this[prop];
+        delete this[prop];
+        return foundedProperty;
+    }
+    return undefined;
+}
+
+//Using for in statement:
+
+Object.prototype.removePropertyForIn = function(prop)
+{
+    prop = String(prop);
+    for(p in this)
+    {
+        if(p === prop)
+        {
+            const foundedProperty = this[prop];
+            delete this[prop];
+            return foundedProperty;
+        }
+    }
+    return undefined;
+}
 
 
